@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A blog about the places I would love to travel to, sharing my dreams and inspiration.">
+    <title>Dream Destinations Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/dist/output.css">
+    <style>
+        /* Horizontal Navigation Bar */
+        nav ul {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: justify;
+        }
+
+        nav ul li {
+            margin: 0 20px; /* Adds space between the links */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+        }
+
+        nav ul li a:hover {
+            color: #007BFF; /* Adds a hover effect */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1 class="underline font-bold text-center">Dream Destinations Blog</h1>
+        <p>Exploring the world, one dream at a time.</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="spain.html">Spain</a></li>
+            <li><a href="singapore.html">Singapore</a></li>
+            <li><a href="boston.html">Boston</a></li>
+            <li><a href="paris.html">Paris</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello there! I'm Azim and I've created this blog to share my dream distinations with you. 
+            <br/>Traveling ignites a sense of wonder in me, that nothing else can match. It’s not just about exploring new places, but about immersing myself in the diversity of cultures, landscapes, and stories the world has to offer. Every journey is an opportunity to learn, grow, and connect—whether it’s with people, nature, or even parts of myself I hadn’t discovered yet. From the bustling streets of a vibrant city to the tranquil wuthering of winds over a serene mountainside, every experience adds a new chapter to my story. Traveling fuels my soul, reminding me that the world is vast, beautiful, and filled with endless possibilities waiting to be embraced.</p>
+    </section>
+
+    <!-- Embedded Video Section -->
+    <section>
+        <h3>Why Travel is My Passion</h3>
+        <video controls>
+            <source src="vids/travel.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me through the following channels:</p>
+        <ul>
+            <li>Email: <a href="mailto:azimkhan9451@gmail.com">azimkhan9451@gmail.com</a></li>
+            <li>Social Media:
+                <ul>
+                    <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Dream Destinations Blog. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    </footer>
+</body>
+</html>
