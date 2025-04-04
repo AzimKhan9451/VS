@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+<body style="margin: 0">
+    <form onsubmit="handleFormSubmit(event)">
+        <label for="name">Choose Expense Amount: </label>
+        <input type="number" id="name" required />
+        <label for="email">Choose Description: </label>
+        <input type="text" id="email" required />
+        <label for="category">Choose Category: </label>
+        <select id="category" required>
+            <option value="" disabled selected>Choose Category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <ul id="listofitems"></ul>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const category = document.getElementById("category").value;
+            
+            if (!username || !email || !category) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const obj = { username, email, category };
+            localStorage.setItem(email, JSON.stringify(obj));
+            showUserOnScreen(obj);
+
+            event.target.reset(); // Clear form after submission
+        }
+
+        function showUserOnScreen(obj) {
+            const parentElem = document.getElementById("listofitems");
+            const li = document.createElement("li");
+            li.innerHTML = `${obj.username} - ${obj.email} - ${obj.category} `;
+            
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.onclick = function() {
+                localStorage.removeItem(obj.email);
+                parentElem.removeChild(li);
+            };
+            
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.onclick = function() {
+                document.getElementById("name").value = obj.username;
+                document.getElementById("email").value = obj.email;
+                document.getElementById("category").value = obj.category;
+                localStorage.removeItem(obj.email);
+                parentElem.removeChild(li);
+            };
+            
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+            parentElem.appendChild(li);
+        }
+
+        // Load stored data on page load
+        window.onload = function() {
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const obj = JSON.parse(localStorage.getItem(key));
+                showUserOnScreen(obj);
+            }
+        }
+    </script>
+</body>
+</html>
